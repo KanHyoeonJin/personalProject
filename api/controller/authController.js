@@ -41,7 +41,7 @@ export const register=async(req,res,next)=>{
 
 export const Login = async (req, res, next) => {
     try {
-        const user = await User.findOne({ username: req.body.username });
+        const user = await User.findOne({ ID: req.body.ID });
         if (!user) return next(createError(404, "User not found!"));
 
         const isPasswordCorrect = await brcypt.compare(

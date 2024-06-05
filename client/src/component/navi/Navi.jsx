@@ -27,6 +27,7 @@ const Navi=()=>{
                 <div className='navi-button'>
                     <button className='button'onClick={()=>{navigator('/mypage')}}>마이페이지</button>
                     <button className='button' onClick={handleLogout}>로그아웃</button>
+                    <button className='button' onClick={()=>{navigator('/')}}>홈</button>
                 </div>
               ):(
                 <div className='navi-button'>
@@ -38,9 +39,7 @@ const Navi=()=>{
                 </div>
               )}  
            
-            <div className='naviBarContainer'>
-                <p>블로그이름</p>
-            </div>
+            
         </div>
     );
 }

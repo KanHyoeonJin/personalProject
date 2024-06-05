@@ -1,26 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
+import ProfileImageUpload from "./ImageUpload";
+
+
+axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:8800/api';
+axios.defaults.withCredentials = true;
 
 const ProfileUpdate = () => {
-    const { user } = useContext(AuthContext);
+    const { user,dispatch } = useContext(AuthContext);
     const [userInfo, setUserInfo] = useState({
-        username: '',
-        email: '',
-        password: ''
+        username: user?.username || '',
+        email: user?.email || '',
+        profileImage: user?.profileImage || ''
+        
     });
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const response = await axios.get('/mypage/getprofile', {
+                const response = await axios.get('/mypage2/getprofile2', {
                     withCredentials: true
                 });
-                if (response.data.user) {
+                const user=await response.data;
+                if (user) {
                     setUserInfo({
                         username: response.data.user.username || '',
                         email: response.data.user.email || '',
-                        password: ''
+                        profileImage:response.data.user.profileImage || ''
                     });
                 }
             } catch (e) {
@@ -39,17 +46,21 @@ const ProfileUpdate = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.put(`/mypage/${user._id}`, userInfo, {
+            console.log("변경유저정보 : ",userInfo);
+            const response = await axios.put(`/mypage2/${user._id}`, userInfo, {
                 withCredentials: true
             });
             alert("정보가 업데이트되었습니다.");
+            dispatch({type:"LOGIN_SUCCESS", payload:userInfo})
         } catch (e) {
             console.error(e);
         }
     };
 
+
     return (
         <div>
+            <ProfileImageUpload/>
             <h2>회원 정보 수정</h2>
             <form onSubmit={handleUpdate}>
                 <label>
@@ -62,10 +73,7 @@ const ProfileUpdate = () => {
                     <input type="email" name="email" value={userInfo.email} onChange={handleChange} />
                 </label>
                 <br />
-                <label>
-                    비밀번호
-                    <input type="password" name="password" value={userInfo.password} onChange={handleChange} />
-                </label>
+              
                 <br />
                 <button type="submit">정보 수정</button>
             </form>

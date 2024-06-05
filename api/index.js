@@ -11,7 +11,6 @@ import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -34,7 +33,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/api/posts', post);
 app.use('/api/comments', comment);
 app.use('/api/auth', auth);
-app.use('/api/mypage', user);
+app.use('/api/mypage2', user);
 
 // MongoDB 연결
 const connect = async () => {

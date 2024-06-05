@@ -1,4 +1,5 @@
 /api/node_modules
-api/node_modules
-api/node_modules/
-api/node_modules
+/client/node_modules
+.DS_Store
+/api/.env
+/client/.env

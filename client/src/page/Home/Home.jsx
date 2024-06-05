@@ -13,6 +13,9 @@ const Home=()=>{
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <Navi/>
             <div className="main">
+            <div className='naviBarContainer'>
+                <p>블로그이름</p>
+            </div>
                 <button className="button" onClick={goWrite}>글쓰기</button>
                 <button className="button">글목록</button>
 

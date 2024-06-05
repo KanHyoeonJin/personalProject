@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext.js';
 import axios from 'axios';
-
+import Navi from '../../component/navi/Navi.jsx';
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:8800/api';
 axios.defaults.withCredentials = true;
 
@@ -48,10 +48,8 @@ const Login = () => {
     return (
         <div>
              <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <h2>로그인</h2> 
-            <div>
-                <button type='button' className='button' onClick={()=>{navigate('/')}}>홈</button>
-            </div>
+           
+           <Navi/>
             {error && <p style={{ color: 'red' }}>{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>

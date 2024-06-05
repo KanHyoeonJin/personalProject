@@ -1,3 +1,4 @@
+
 import User from "../model/User.js";
 import { createError } from "../utile/error.js";
 import { fileURLToPath } from "url";
@@ -15,11 +16,12 @@ export const updateProfileImage = async (req, res, next) => {
         }
 
         const userId = req.params.id;
+        console.log("유저ID: ",req.params.id)
         if (!userId) {
             return next(createError(400, "User ID is required"));
         }
 
-        const user = await UserModel.findById(userId);
+        const user = await User.findById(userId);
         if (!user) {
             return next(createError(404, "User not found"));
         }
@@ -38,6 +40,7 @@ export const updateProfileImage = async (req, res, next) => {
         // 백슬래시(\)를 슬래시(/)로 변환하여 저장
         const imgPath = req.file.path.replace(/\\/g, "/");
         user.profileImage = `/uploads/${req.file.filename}`;
+        console.log("유저 프로필 이미지: ",user.profileImage);
         await user.save();
         console.log('Updated user:', user);
         res.status(200).json({ message: "Profile image updated", user: { profileImage: user.profileImage } });
