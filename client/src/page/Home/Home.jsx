@@ -1,6 +1,5 @@
 import Navi from "../../component/navi/Navi";
 import './home.css';
-import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const Home=()=>{

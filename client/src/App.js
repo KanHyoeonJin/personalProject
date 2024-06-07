@@ -2,11 +2,9 @@ import './App.css';
 import {
   BrowserRouter,
   Route,
-  Router,
   Routes
 }from "react-router-dom"
 import Home from './page/Home/Home';
-import Navi from './component/navi/Navi';
 import Write from './page/write/Write';
 import Login from './page/Login/Login';
 import Mypage from './page/mypage/Mypage';

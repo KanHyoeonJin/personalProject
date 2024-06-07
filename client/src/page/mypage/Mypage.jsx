@@ -1,9 +1,6 @@
-import { AuthContext } from "../../context/AuthContext"
-import React,{useState,useEffect, useContext} from "react"
+
+import React from "react"
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { faL } from "@fortawesome/free-solid-svg-icons";
-import ProfileImageUpload from "./ImageUpload";
 import ProfileUpdate from "./ProfileUpdate";
 import Navi from "../../component/navi/Navi";
 

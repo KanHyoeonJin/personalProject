@@ -1,4 +1,4 @@
-import Navi from "../../component/navi/Navi";
+
 import "./write.css";
 import { useState,useEffect, useContext ,useRef} from "react";
 import { AuthContext } from "../../context/AuthContext";

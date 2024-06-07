@@ -1,6 +1,6 @@
 import './Navi.css'
 import { useNavigate } from 'react-router-dom';
-import React,{useState ,useEffect, useContext} from 'react';
+import React,{useContext} from 'react';
 import axios from "axios"
 import { AuthContext } from '../../context/AuthContext.js';
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:8800/api';

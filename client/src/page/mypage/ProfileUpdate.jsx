@@ -47,7 +47,7 @@ const ProfileUpdate = () => {
 
         try {
             console.log("변경유저정보 : ",userInfo);
-            const response = await axios.put(`/mypage2/${user._id}`, userInfo, {
+            await axios.put(`/mypage2/${user._id}`, userInfo, {
                 withCredentials: true
             });
             alert("정보가 업데이트되었습니다.");

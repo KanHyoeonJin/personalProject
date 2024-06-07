@@ -1,9 +1,8 @@
-import React,{useState,useEffect} from "react";
-import { AuthContext } from "../../context/AuthContext";
+import React,{useState} from "react";
 import "./register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import {faEye, faEyem, faEyeSlash} from "@fortawesome/free-solid-svg-icons"
+import {faEye, faEyeSlash} from "@fortawesome/free-solid-svg-icons"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || 'http://localhost:8080/api';
@@ -33,8 +32,8 @@ const Register=()=>{
         try{
             const res=await axios.post('/auth/register',userData);
             navigator('/login');
-        }catch(e){
-            setErr(e.response.data.message)
+        }catch(err){
+            setErr(err.response.data.message)
         }
     }
     const goHome=()=>{
